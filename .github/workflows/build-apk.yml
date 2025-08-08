@@ -1,0 +1,23 @@
+
+name: Build Android APK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install Expo CLI + EAS
+        run: npm install -g expo-cli eas-cli
+      - name: Authenticate with Expo
+        run: expo login --non-interactive -u ${{ secrets.EXPO_USERNAME }} -p ${{ secrets.EXPO_PASSWORD }}
+      - name: Run EAS Build
+        run: eas build --platform android --non-interactive --no-wait
