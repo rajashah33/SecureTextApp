@@ -1,5 +1,6 @@
 {
   "expo": {
+	"owner": "rgfriendlol100",
     "name": "SecureTextApp",
     "slug": "securetextapp",
     "version": "1.0.0",
